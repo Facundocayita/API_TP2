@@ -1,4 +1,4 @@
-/* Modelo Categoria: 1 categoria tiene muchos productos */
+/* 1 categoria tiene muchos productos */
 module.exports = (sequelize, DataTypes) => {
     const Categoria = sequelize.define(
         "Categoria",

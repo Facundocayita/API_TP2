@@ -1,13 +1,12 @@
-/* Registra modelos y asociaciones en un solo lugar */
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../connection/connection");
 
-// Import/define modelos
+// Importa/define modelos
 const User = require("./User")(sequelize, DataTypes);
 const Categoria = require("./Categoria")(sequelize, DataTypes);
 const Producto = require("./Producto")(sequelize, DataTypes);
 
-// Asociaciones (1:N) Categoria → Producto
+// Asociacio (1:Muchos) Categoria → Producto
 Categoria.hasMany(Producto, { foreignKey: "categoriaId", as: "productos" });
 Producto.belongsTo(Categoria, { foreignKey: "categoriaId", as: "categoria" });
 

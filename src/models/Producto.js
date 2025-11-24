@@ -1,4 +1,4 @@
-/* Modelo Producto: pertenece a una categoria (categoriaId) */
+/* Producto: pertenece a una categoria (categoriaId) */
 module.exports = (sequelize, DataTypes) => {
     const Producto = sequelize.define(
         "Producto",

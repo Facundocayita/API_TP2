@@ -1,4 +1,4 @@
-/* Modelo User: para futuros endpoints de auth/roles */
+/* User: para futuros endpoints de auth/roles */
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define(
         "User",
