@@ -1,4 +1,5 @@
-/* User: para futuros endpoints de auth/roles */
+const bcrypt = require("bcryptjs");
+
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define(
         "User",
@@ -15,5 +16,18 @@ module.exports = (sequelize, DataTypes) => {
             underscored: true
         }
     );
+
+    //Hashea Contraseña
+    User.beforeCreate(async (user) => {
+        const salt = await bcrypt.genSalt();
+        const hash = await bcrypt.hash(user.passwordHash, salt);
+        user.passwordHash = hash;
+    });
+
+    // valida contraseña
+    User.decodeVerifyPass = async (plainPassword, hash) => {
+        return await bcrypt.compare(plainPassword, hash);
+    };
+
     return User;
 };
